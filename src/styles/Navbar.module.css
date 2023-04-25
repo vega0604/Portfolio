@@ -1,0 +1,47 @@
+
+.navlist {
+    margin: auto 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 6rem;
+    height: 100%;
+    background-color:#1E231A;
+}
+
+.logo {
+    position: absolute;
+    top: 2rem;
+}
+
+.logo img {
+    width: 4rem;
+}
+
+.navlist li {
+    list-style: none;
+}
+
+.navbarItem {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbarItem img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.navbarItem:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+

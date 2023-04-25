@@ -1,15 +1,17 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Navbar from './components/navbar'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>Sebastian Vega</title>
+        <link rel='icon' href='logo.svg'/>
       </Head>
+      <Navbar />
     </>
   )
 }
