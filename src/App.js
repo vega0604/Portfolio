@@ -5,14 +5,14 @@ import About from "@pages/About";
 import Projects from "@pages/Projects";
 import Socials from "@pages/Socials";
 
-import "@css/global.css";
+import "@css/globals.css";
 
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route path="" element={<Overview />}/>
           <Route path="overview" element={<Overview />}/>
           <Route path="about" element={<About />}/>
