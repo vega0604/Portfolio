@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from "@pages/Layout";
 import Overview from "@pages/Overview";
 import About from "@pages/About";
@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="" element={<Overview />}/>
+          <Route path="" element={<Navigate to="overview" replace={true}/>}/>
           <Route path="overview" element={<Overview />}/>
           <Route path="about" element={<About />}/>
           <Route path="projects" element={<Projects />}/>
