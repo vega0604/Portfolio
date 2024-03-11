@@ -1,5 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from "@pages/Layout";
+import Overview from "@pages/Overview";
+import About from "@pages/About";
+import Projects from "@pages/Projects";
+import Socials from "@pages/Socials";
+
 import "@css/global.css";
 
 
