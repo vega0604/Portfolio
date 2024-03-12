@@ -45,6 +45,11 @@
     padding: 5px 8px;
     margin-bottom: 0.5rem;
     font-size: 0.875rem;
+    border-radius: 5px;
+}
+
+.link_group a:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .link_group a img {
