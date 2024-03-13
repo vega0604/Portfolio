@@ -114,7 +114,7 @@
         bottom: -7.1rem;
         right: 0;
         list-style: none;
-        display: none;
+        display: flex;
         flex-flow: column nowrap;
         padding: 0.5rem;
         border: 1px solid var(--gray);
