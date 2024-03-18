@@ -1,3 +1,11 @@
+
+:root {
+    --bg: #0d1017;
+    --fg: white;
+    --navBG: #010409;
+    --gray: #30363d;
+}
+
 html {
     width: 100%;
     height: 100%;
@@ -8,9 +16,9 @@ body {
     height: 100%;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+    color: var(--fg);
 
-    background: #0d1017;
+    background: var(--bg);
 }
 
 #root {

@@ -27,29 +27,33 @@ function Navbar(){
         const dynamicLinksCopy = [...dynamicLinks];
 
         function handleResize(){
-            const margin = 400;
-            const sum = linksCopy.reduce((prev, curr) => prev + 100, 0);
-            console.log(sum);
-            if (window.innerWidth < sum + margin && linksCopy.length > 1) {
-                dynamicLinksCopy.push(linksCopy.pop());
+            // fix with function parameters for list states
+            var vLinks = document.getElementById(styles.nav_links);
+            var dropdown = document.getElementById(styles.drop_down).children;
+            var navbar = document.getElementById(styles.navbar);
+            var ellipsis = document.getElementById(styles.ellipsis);
 
-            } else if (dynamicLinksCopy.length > 0) {
+
+            var availableSpace = navbar.getBoundingClientRect().width - ellipsis.getBoundingClientRect().width - 50;
+            if (vLinks.children.length > 1 && vLinks.getBoundingClientRect().width + 50 >= availableSpace){
+                dynamicLinksCopy.push(linksCopy.pop());
+            } else if (dropdown.length > 0 && vLinks.getBoundingClientRect().width + dropdown.item(dropdown.length-1).getBoundingClientRect().width + 50 < availableSpace){
                 linksCopy.push(dynamicLinksCopy.pop());
-                
             }
+
             setLinks(linksCopy);
             setDynamicLinks(dynamicLinksCopy);
+            // if (vLinks.length > 1 && vLinksWidth >= availableSpace){
+            //     handleResize();
+            // }
         }
 
-        // handleResize();
-
         window.addEventListener('resize', handleResize);
-        window.addEventListener('load', () => {
-            for (let i=0; i < 3; i++){
-                handleResize();
-            }
-        });
-        return () => window.removeEventListener('resize', handleResize);
+        window.addEventListener('load', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            // window.removeEventListener('load', handleResize);
+        };
     }, [links, dynamicLinks]);
 
     return(
@@ -71,23 +75,21 @@ function Navbar(){
                 })}
             </ul>  
         
-            <div id={styles.ellipsis}>
-                <div onClick={() => setToggle(!toggle)}></div>
-                {toggle && 
-                    <ul id={styles.drop_down}>
-                        {dynamicLinks.length > 0 && dynamicLinks.map((link) => {
-                            return (
-                                <li ref={link.ref} key={link.path} className={`${styles.link_group} ${pathname === `/${link.path}` && styles.active}`}>
-                                <Link to={link.path}>
-                                    <img src={link.icon} alt={`${link.name} icon`}/>
-                                    <p>{link.name}</p>
-                                </Link>
-                            </li>
-                            );
-                        })}
-                    </ul>
-                }
+            <div id={styles.ellipsis} onClick={() => setToggle(!toggle)}>
+                <div></div>
             </div>
+            <ul id={styles.drop_down} className={(!toggle || dynamicLinks.length === 0) && styles.hidden}>
+                {dynamicLinks.map((link) => {
+                    return (
+                        <li key={link.path} className={`${styles.link_group} ${pathname === `/${link.path}` && styles.active}`}>
+                        <Link to={link.path}>
+                            <img src={link.icon} alt={`${link.name} icon`}/>
+                            <p>{link.name}</p>
+                        </Link>
+                    </li>
+                    );
+                })}
+            </ul>
         </nav>
     );
 }
