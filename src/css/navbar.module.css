@@ -114,7 +114,7 @@
     right: -7px;
 }
 
-@media screen and (max-width: 505px){
+@media screen and (max-width: 501px){
     #ellipsis {
         display: flex;
     }
