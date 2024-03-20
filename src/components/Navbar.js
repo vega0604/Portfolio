@@ -8,53 +8,58 @@ import about from '@images/about.svg';
 import projects from '@images/projects.svg';
 import socials from '@images/socials.svg';
 
+function calcWidth(links){
+    return links.reduce((acc, curr) => acc + curr.width + 16, 0) - 16;
+}
+
+function updateLinks(vLinks, hLinks){
+    var navbar = document.getElementById(styles.navbar);
+    var ellipsis = document.getElementById(styles.ellipsis);
+
+    var availableSpace = navbar.getBoundingClientRect().width - ellipsis.getBoundingClientRect().width - 50;
+
+    if (vLinks.length > 1 && calcWidth(vLinks) > availableSpace){
+        hLinks.push(vLinks.pop());
+    } else if (hLinks.length > 0 && calcWidth(vLinks) < availableSpace){
+        vLinks.push(hLinks.pop());
+    }
+
+    if (vLinks.length > 1 && calcWidth(vLinks) > availableSpace){
+        return updateLinks(vLinks, hLinks);
+    }
+
+    return [vLinks, hLinks];
+}
+
 function Navbar(){
     const { pathname } = useLocation();
 
     const [toggle, setToggle] = useState(false);
 
     const [links, setLinks] = useState([
-        {path: 'overview', icon: overview, name: 'Overview'},
-        {path: 'about', icon: about, name: 'About Me'},
-        {path: 'projects', icon: projects, name: 'Projects'},
-        {path: 'socials', icon: socials, name: 'Socials'}
+        {path: 'overview', icon: overview, name: 'Overview', width: pathname === '/overview' ? 102.359: 99.797},
+        {path: 'about', icon: about, name: 'About Me', width: pathname === '/about' ? 100.047: 98.250},
+        {path: 'projects', icon: projects, name: 'Projects', width: pathname === '/projects' ? 90.766: 89.172},
+        {path: 'socials', icon: socials, name: 'Socials', width: pathname === '/socials' ? 83.625: 82.344}
     ]);
 
     const [dynamicLinks, setDynamicLinks] = useState([]);
 
     useEffect(() => {
-        const linksCopy = [...links];
-        const dynamicLinksCopy = [...dynamicLinks];
-
         function handleResize(){
-            // fix with function parameters for list states
-            var vLinks = document.getElementById(styles.nav_links);
-            var dropdown = document.getElementById(styles.drop_down).children;
-            var navbar = document.getElementById(styles.navbar);
-            var ellipsis = document.getElementById(styles.ellipsis);
+            var result = updateLinks([...links], [...dynamicLinks]);
 
-
-            var availableSpace = navbar.getBoundingClientRect().width - ellipsis.getBoundingClientRect().width - 50;
-            if (vLinks.children.length > 1 && vLinks.getBoundingClientRect().width + 50 >= availableSpace){
-                dynamicLinksCopy.push(linksCopy.pop());
-            } else if (dropdown.length > 0 && vLinks.getBoundingClientRect().width + dropdown.item(dropdown.length-1).getBoundingClientRect().width + 50 < availableSpace){
-                linksCopy.push(dynamicLinksCopy.pop());
-            }
-
-            setLinks(linksCopy);
-            setDynamicLinks(dynamicLinksCopy);
-            // if (vLinks.length > 1 && vLinksWidth >= availableSpace){
-            //     handleResize();
-            // }
+            setLinks(result[0]);
+            setDynamicLinks(result[1]);
         }
 
+        handleResize();
+
         window.addEventListener('resize', handleResize);
-        window.addEventListener('load', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
-            // window.removeEventListener('load', handleResize);
         };
-    }, [links, dynamicLinks]);
+    }, []);
 
     return(
         <nav id={styles.navbar}>
@@ -65,7 +70,7 @@ function Navbar(){
             <ul id={styles.nav_links}>
                 {links.length > 0 && links.map((link) => {
                     return (
-                        <li key={link.path} className={`${styles.link_group} ${pathname === `/${link.path}` && styles.active}`}>
+                        <li key={link.path} className={`${styles.link_group} ${pathname === `/${link.path}` ? styles.active: undefined}`}>
                             <Link to={link.path}>
                                 <img src={link.icon} alt={`${link.name} icon`}/>
                                 <p>{link.name}</p>
@@ -78,10 +83,10 @@ function Navbar(){
             <div id={styles.ellipsis} onClick={() => setToggle(!toggle)}>
                 <div></div>
             </div>
-            <ul id={styles.drop_down} className={(!toggle || dynamicLinks.length === 0) && styles.hidden}>
+            <ul id={styles.drop_down} className={(!toggle || dynamicLinks.length === 0) ? styles.hidden: undefined}>
                 {dynamicLinks.map((link) => {
                     return (
-                        <li key={link.path} className={`${styles.link_group} ${pathname === `/${link.path}` && styles.active}`}>
+                        <li key={link.path} className={styles.link_group}>
                         <Link to={link.path}>
                             <img src={link.icon} alt={`${link.name} icon`}/>
                             <p>{link.name}</p>
