@@ -1,0 +1,9 @@
+
+#general {
+    padding-top: 2.5rem;
+
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+}

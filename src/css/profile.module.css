@@ -1,0 +1,52 @@
+
+
+#profile{
+    display: flex;
+    flex-flow: column nowrap;
+    width: min-content;
+
+    align-items: stretch;
+    row-gap: 1rem;
+}
+
+#avatar {
+    height: 18rem;
+    border-radius: 50%;
+    border: 1px solid #30363db3;
+}
+
+#text h2,
+#text h3 {
+    margin: 0;
+}
+
+#text h2 {
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 600;
+}
+
+#text h3 {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 300;
+    color: #848d97;
+}
+
+#profile a {
+    display: grid;
+    place-items: center;
+    background-color: #21262d;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #30363db3;
+
+    color: #c9d1d9;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#profile a:hover {
+    background-color: #292e36;
+}
+
