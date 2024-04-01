@@ -1,14 +1,20 @@
 
 #general {
-    padding: 2.5rem 5rem;
+    padding: 2.5rem 1rem;
 
     display: flex;
     flex-wrap: wrap;
-    /* align-items: center; */
+    align-items: flex-start;
     justify-content: center;
     gap: 2rem;
 
     max-width: 120rem;
 
     position: relative;
+}
+
+@media (max-width: 1025px){
+    #general {
+        align-items: center;
+    }
 }
