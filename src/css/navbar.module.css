@@ -3,10 +3,10 @@
 #navbar {
     position: relative;
     background: var(--navBG);
-    padding-top: 0.5rem;
+    padding-top: 1rem;
     display: flex;
     flex-flow: column;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 #banner {
