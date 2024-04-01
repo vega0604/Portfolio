@@ -1,0 +1,88 @@
+
+
+.statusPill {
+    width: min-content;
+    text-wrap: nowrap;
+
+    padding: 2px 8px;
+    border-radius: 100px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.greenPill {
+    border: 1px solid #238636;
+    color: #3fb950;
+}
+
+.orangePill {
+    border: 1px solid orange;
+    color: #fbca04;
+}
+
+.redPill {
+    border: 1px solid #8b2323;
+    color: #d81111;
+}
+
+.greyPill {
+    border: 1px solid #30363d;
+    color: #848d97;
+}
+
+.projectName {
+    color: #4493f8;
+    font-size: 1rem;
+    font-weight: 500;
+
+    width: min-content;
+    text-wrap: nowrap;
+}
+
+.projectName:hover {
+    text-decoration: underline;
+}
+
+.displayContainer {
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid #30363d;
+    border-radius: 0.375rem;
+
+    position: relative;
+    width: 100%;
+}
+
+.displayContent {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.description {
+    font-size: 12px;
+    color: #848d97;
+}
+
+.techStack {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #848d97;
+    gap: 5px;
+}
+
+.techStack span{
+    display: block;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: blue;
+}

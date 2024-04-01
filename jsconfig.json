@@ -6,7 +6,8 @@
         "@css": ["./css"],
         "@images": ["./resources/images"],
         "@fonts": ["./resources/fonts"],
-        "@pages": ["./pages"]
+        "@pages": ["./pages"],
+        "@src": ["./"]
       }
     },
     "exclude": ["node_modules"]
