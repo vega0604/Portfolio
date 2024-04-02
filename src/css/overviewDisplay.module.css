@@ -43,6 +43,7 @@
 
     width: min-content;
     text-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .projectName:hover {
