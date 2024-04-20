@@ -35,19 +35,19 @@ const ProjectList = [
         description: "Website for the University of Toronto Minecraft Club", 
         techStack: ["React", "JSX", "HTML", "CSS", "Vercel"], 
         status: States.Complete, 
-        contributors: [...Contributors]
+        contributors: [Contributors[0], Contributors[1]]
     },
     {
         name: "WFC-Grid", 
         description: "App simulating a wave function collapse algorithm used in randomly generated terrain methods", 
-        techStack: [], 
+        techStack: ["Python", "PyGame"], 
         status: States.InProgress,
         contributors: [Contributors[0]]
     },
     {
         name: "PulsePoint", 
         description: "A Blockchain EMR solution to emergency room off-loading", 
-        techStack: [], 
+        techStack: ["React"], 
         status: States.InProgress,
         contributors: [Contributors[0], Contributors[1], Contributors[3]]
     },
