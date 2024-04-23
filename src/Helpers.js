@@ -41,7 +41,7 @@ const ProjectList = [
         name: "WFC-Grid", 
         description: "App simulating a wave function collapse algorithm used in randomly generated terrain methods", 
         techStack: ["Python", "PyGame"], 
-        status: States.InProgress,
+        status: States.Complete,
         contributors: [Contributors[0]]
     },
     {
@@ -54,7 +54,7 @@ const ProjectList = [
     {
         name: "GitMania", 
         description: "Web App to help newcomers learn git basics in a fun and interactive way", 
-        techStack: [], 
+        techStack: ["JS", "HTML", "CSS"], 
         status: States.Incomplete,
         contributors: [Contributors[0], Contributors[2]]
     },
