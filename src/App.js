@@ -6,6 +6,7 @@ import Overview from "@pages/Overview";
 import About from "@pages/About";
 import Projects from "@pages/Projects";
 import Socials from "@pages/Socials";
+import Project from 'pages/Project';
 
 import "@css/globals.css";
 
@@ -23,7 +24,9 @@ function App() {
             <Route path="" element={<Navigate to="overview" replace={true}/>}/>
             <Route path="overview" element={<Overview />}/>
             <Route path="about" element={<About />}/>
-            <Route path="projects" element={<Projects />}/>
+            <Route path="projects" element={<Projects />}>
+              <Route path=':id' element={<Project/>}/>
+            </Route>
             <Route path="socials" element={<Socials />}/>
           </Route>
         </Routes>
