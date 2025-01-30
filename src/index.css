@@ -17,13 +17,13 @@
   --dark: #1E1E1E;
   --light: #ffffff;
   --light_50: #ffffff80;
-  --highlight: rgba(255, 255, 255, 0.02);
+  --highlight: #ffffff20;
 
   --complete: #50DE5A;
   --in_progress: #DEBD50;
 
-  --inline_padding: clamp(1.5rem, 5vw, 2.5rem);
-  --block_padding: 1.25rem;
+  --inline_padding: 40px;
+  --block_padding: 0px;
 }
 
 html {
@@ -61,7 +61,7 @@ h1, h2, h3, p {
 }
 
 h1 {
-  font-size: clamp(20px, 5vw, 35px);
+  font-size: clamp(30px, 5vw, 35px);
 }
 
 h2 {

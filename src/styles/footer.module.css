@@ -1,0 +1,8 @@
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-block: clamp(15px, 2vw, 20px);
+}

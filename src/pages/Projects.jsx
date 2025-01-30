@@ -3,6 +3,7 @@
 function Projects(){
     return (
         <>
+        Projects
         </>
     );
 }

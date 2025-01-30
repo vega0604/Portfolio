@@ -1,48 +1,5 @@
-
-const TOOLS = Object.freeze({
-    REACT: 'React', 
-    ASP_NET: 'ASP.NET',
-    EXPRESS: 'ExpressJS',
-    GEMINI: 'Gemini AI',
-    NODE: 'NodeJS',
-    SIGNALR: 'SignalR',
-    MAPBOX: 'MapBox',
-    AUTH0: 'Auth0',
-    MONGODB: 'MongoDB',
-    JQUERY: 'JQuery',
-    HEDERA: 'Hedera Hashgraph',
-    R3FIBRE: 'React-Three-Fibre',
-    DOTNET_MAUI: '.NET Maui',
-    HTML: 'HTML',
-    CSS: 'CSS',
-    JS: 'Javascript',
-    PIXI: 'PixiJS'
-});
-
-const STATUS = Object.freeze({
-    COMPLETE: 'Complete',
-    IN_PROGRESS: 'In Progress'
-})
-
-const PROJECT_TYPE = Object.freeze({
-    PERSONAL: 'Personal',
-    ACADEMIC: 'Academic',
-    PROFESSIONAL: 'Professional',
-    CONTRACT: 'Contract'
-});
-
-export const stringToHex = (str) => {
-    let hash = 0;
-    str.split('').forEach(char => {
-      hash = char.charCodeAt(0) + ((hash << 5) - hash)
-    })
-    let colour = '#'
-    for (let i = 0; i < 3; i++) {
-      const value = (hash >> (i * 8)) & 0xff
-      colour += value.toString(16).padStart(2, '0')
-    }
-    return colour
-}
+import { TOOLS, PROJECT_TYPE, STATUS } from "@data/enums";
+import { COLLABORATORS } from "@data/collaborators";
 
 /*
 typedef PROJECT = {
@@ -58,54 +15,6 @@ typedef PROJECT = {
     collaborators: COLLABORATORS[]
 }
 */
-
-const COLLABORATORS = Object.freeze({
-    'aleks': {
-        name: 'Aleks Bursac',
-        portfolio: 'https://www.aleksbrsc.com/',
-        github: 'https://github.com/aleksbrsc'
-    },
-    'anya': {
-        name: 'Anya Popova',
-        portfolio: null,
-        github: 'https://github.com/anya-pop'
-    },
-    'brandyn': {
-        name: 'Brandyn Sudjito',
-        portfolio: null,
-        github: 'https://github.com/brandynsudjito'
-    },
-    'shazeb': {
-        name: 'Shazeb',
-        portfolio: 'https://shazeb.live/',
-        github: 'https://github.com/ShazebA'
-    },
-    'ahmad': {
-        name: 'Ahmad Ibrahim',
-        portfolio: null,
-        github: 'https://github.com/House-MD'
-    },
-    'nazik': {
-        name: 'Nazik Hweija',
-        portfolio: null,
-        github: 'https://github.com/NazikHweija'
-    }, 
-    'iman': {
-        name: 'Iman Kamran',
-        portfolio: 'https://www.imank.us/',
-        github: 'https://github.com/imankamrann'
-    },
-    'emily': {
-        name: 'Emily Ibanez',
-        portfolio: null,
-        github: null
-    },
-    'audrey': {
-        name: 'Audrey Man',
-        portfolio: null,
-        github: 'https://github.com/MornTHEMorning'
-    }
-});
 
 export const PROJECTS = [
     {
