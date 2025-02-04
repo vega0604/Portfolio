@@ -8,3 +8,13 @@
     background: var(--dark);
     box-shadow: 0px -8px 5px var(--dark);
 }
+
+.links_list {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.link {
+    text-wrap: nowrap;
+    white-space: none;
+}
