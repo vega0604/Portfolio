@@ -10,10 +10,33 @@
     flex-flow: column nowrap;
 }
 
+.form_container {
+    width: calc(100% + 1rem);
+    padding-bottom: 20px;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 5px var(--dark);
+    z-index: 9;
+}
+
+.form_container form {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.filters_container {
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+}
+
 .project_list {
     height: 100%;
     min-height: 0;
     overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 5px;
 }
 
 .project_list::-webkit-scrollbar {
@@ -32,10 +55,46 @@
     gap: 10px;
     padding: 1rem 0.5rem;
     border-bottom: 1px solid var(--light_50);
+    height: 128px;
+    transition: height 0.2s ease-in-out;
 }
 
+.project_item[data-selected=true] {
+    background-color: red;
+    height: 10rem;
+}
+
+.project_name {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.project_status {
+    --size: 10px;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+}
+
+.project_status.complete {
+    background: var(--complete);
+}
+
+.project_status.in_progress {
+    background: var(--in_progress);
+}
 .project_dates {
     color: var(--light_50);
+}
+
+.project_description {
+    display: block;
+    width: calc(100% - 2rem);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 

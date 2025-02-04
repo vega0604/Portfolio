@@ -1,5 +1,7 @@
 
 .footer {
+    width: calc(100% + 1rem);
+    padding-right: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,6 +17,7 @@
 }
 
 .link {
+    color: var(--light);
     text-wrap: nowrap;
     white-space: none;
 }

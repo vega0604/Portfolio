@@ -7,6 +7,16 @@ import styles from "@styles/projects.module.css";
 
 function Projects(){
     const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
+    const [selectedProject, setSelectedProject] = useState(-1);
+    const [searching, setSearching] = useState(false);
+
+    function handleProjectSelection(i){
+        if (selectedProject == i){
+            setSelectedProject(-1);
+        } else {
+            setSelectedProject(i);
+        }
+    }
 
     return (
         <section className={styles.project_section}>
@@ -14,7 +24,7 @@ function Projects(){
                 <form>
                     <div className={styles.searchbar_container}>
                         <input type="text" />
-                        <div className={styles.filters_container}>
+                        <div className={styles.filters_container} data-toggled={searching}>
                             <div>
                                 <h3>Date</h3>
                                 <ul>
@@ -48,15 +58,15 @@ function Projects(){
                         </div>
                     </div>
                     <div className={styles.sorter_container}>
-                        <button></button>
+                        <button>Sort By</button>
                         <div></div>
                     </div>
                 </form>
             </search>
             <ul className={styles.project_list}>
                 {displayedProjects.map((project, i) => 
-                    <li key={i} className={styles.project_item}>
-                        <h2 className={styles.project_name}>{project.name}</h2>
+                    <li key={i} className={styles.project_item} onClick={() => handleProjectSelection(i)} data-selected={selectedProject == i}>
+                        <h2 className={styles.project_name}>{project.name} <span className={`${styles.project_status} ${project.status == STATUS.COMPLETE ? styles.complete: styles.in_progress}`}/></h2>
                         <p className={styles.project_dates}>{dateToString(project.start_date)} {project.end_date && `- ${dateToString(project.end_date)}`}</p>
                         <p className={styles.project_description}>{project.description}</p>
                         <div className={styles.development_info_container}>
@@ -67,7 +77,7 @@ function Projects(){
                             <ul className={styles.collaborators_list}>
                                 {project.collaborators.map((person, j) => person.github && 
                                     <li key={j} className={styles.collaborator}>
-                                        <a href={person.github} target="_blank">
+                                        <a href={person.github} target="_blank" onClick={(e) => e.stopPropagation()}>
                                             <img src={`${person.github}.png`} alt="Collaborator GitHub" />
                                         </a>
                                     </li>
