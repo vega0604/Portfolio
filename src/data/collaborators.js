@@ -7,7 +7,7 @@ export const COLLABORATORS = Object.freeze({
     },
     'anya': {
         name: 'Anya Popova',
-        portfolio: null,
+        portfolio: 'https://www.anyapopova.com/',
         github: 'https://github.com/anya-pop'
     },
     'brandyn': {
