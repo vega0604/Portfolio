@@ -4,6 +4,7 @@ import { TOOLS, STATUS, PROJECT_TYPE } from "@data/enums";
 import { stackToString, stackToConicGradient, dateToString } from "@utils/converters";
 import { useState } from "react";
 import styles from "@styles/projects.module.css";
+import sortby from "@assets/home/sortby_icon.svg";
 
 function Projects(){
     const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
@@ -23,7 +24,7 @@ function Projects(){
             <search className={styles.form_container}>
                 <form>
                     <div className={styles.searchbar_container}>
-                        <input type="text" />
+                        <input type="text" placeholder="Enter Search Term..." onFocus={(e) => e.target.click()} onClick={() => setSearching(true)} onBlur={() => setSearching(false)}/>
                         <div className={styles.filters_container} data-toggled={searching}>
                             <div>
                                 <h3>Date</h3>
@@ -58,7 +59,7 @@ function Projects(){
                         </div>
                     </div>
                     <div className={styles.sorter_container}>
-                        <button>Sort By</button>
+                        <button><img src={sortby} alt="Sort By" />Sort By</button>
                         <div></div>
                     </div>
                 </form>
