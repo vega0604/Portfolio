@@ -2,7 +2,8 @@ import { PROJECTS } from "@data/projects";
 import { COLLABORATORS } from "@data/collaborators";
 import { TOOLS, STATUS, PROJECT_TYPE } from "@data/enums";
 import { stackToString, stackToConicGradient, dateToString } from "@utils/converters";
-import { useState } from "react";
+import Fuse from "fuse.js";
+import { useEffect, useState } from "react";
 import styles from "@styles/projects.module.css";
 import sortby from "@assets/home/sortby_icon.svg";
 
@@ -10,6 +11,7 @@ function Projects(){
     const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
     const [selectedProject, setSelectedProject] = useState(-1);
     const [searching, setSearching] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
 
     function handleProjectSelection(i){
         if (selectedProject == i){
@@ -19,12 +21,31 @@ function Projects(){
         }
     }
 
+    const fuseOptions = {
+        threshold: 0.4,
+        keys: [
+            'name',
+            'description'
+        ]
+    };
+    const fuse = new Fuse(PROJECTS, fuseOptions);
+
+    useEffect(() => {
+        const result = fuse.search(searchTerm).map((r) => r.item);
+        
+        if (result.length <= 0){
+            setDisplayedProjects(PROJECTS);
+        } else {
+            setDisplayedProjects(result);
+        }
+    }, [searchTerm]);
+
     return (
         <section className={styles.project_section}>
             <search className={styles.form_container}>
                 <form>
                     <div className={styles.searchbar_container}>
-                        <input type="text" placeholder="Enter Search Term..." onFocus={(e) => e.target.click()} onClick={() => setSearching(true)} onBlur={() => setSearching(false)}/>
+                        <input type="text" placeholder="Enter Search Term..." value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} onFocus={(e) => e.target.click()} onClick={() => setSearching(true)} onBlur={() => setSearching(false)}/>
                         <div className={styles.filters_container} data-toggled={searching}>
                             <div>
                                 <h3>Date</h3>
