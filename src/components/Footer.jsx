@@ -3,14 +3,14 @@ import styles from '@styles/footer.module.css';
 
 function Footer(){
     return (
-        <footer className={`${styles.footer} container`}>
-            <p>© 2025 by Sebastian Vega.</p>
+        <footer className={styles.footer}>
+            <p>© 2025 by Sebastian Vega</p>
             <ul className={styles.links_list}>
                 <li>
                     <a href="/resume.pdf" target="_blank" className={styles.link}>resume</a>
                 </li>
                 <li>
-                    <Link to='contact' className={styles.link}>contact me</Link>
+                    <a href='mailto:sebasvega4604@gmail.com' target="_blank" className={styles.link}>contact</a>
                 </li>
             </ul>
         </footer>

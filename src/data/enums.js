@@ -1,6 +1,7 @@
 
 export const TOOLS = Object.freeze({
     REACT: 'React', 
+    JUPYTER: 'Jupyter Notebook',
     ASP_NET: 'ASP.NET',
     EXPRESS: 'ExpressJS',
     GEMINI: 'Gemini AI',

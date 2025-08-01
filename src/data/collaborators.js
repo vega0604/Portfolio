@@ -1,5 +1,10 @@
 
 export const COLLABORATORS = Object.freeze({
+    'seyon': {
+        name: 'Seyon Sri',
+        portfolio: 'https://www.s3yon.com/',
+        github: 'https://github.com/S3yon'
+    },
     'aleks': {
         name: 'Aleks Bursac',
         portfolio: 'https://www.aleksbrsc.com/',
