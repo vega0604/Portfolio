@@ -7,6 +7,9 @@ function Footer(){
             <p>© 2025 by Sebastian Vega</p>
             <ul className={styles.links_list}>
                 <li>
+                    <a href='https://www.linkedin.com/in/sebastian-vega-orozco/' target="_blank" rel="noopener noreferrer" className={styles.link}>linkedin</a>
+                </li>
+                <li>
                     <a href="/resume.pdf" target="_blank" className={styles.link}>resume</a>
                 </li>
                 <li>
